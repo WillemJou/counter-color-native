@@ -14,7 +14,7 @@ const App = () => {
           options={{
             headerTitleAlign: 'center',
           }}
-          name='Counter Color'
+          name='Counter'
           component={MainPage}
         />
         <Stack.Screen
