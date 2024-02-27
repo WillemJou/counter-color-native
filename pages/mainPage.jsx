@@ -1,12 +1,35 @@
 import { View, Text, Button } from 'react-native'
 import { Counter } from '../components/counter'
 import { ColorView } from '../components/colorView'
+import { PalletsBox } from './palletsBox'
 import { styles } from '../style'
-import { useAddColor, useChangeColor } from '../hooks'
+import { useState, useEffect } from 'react'
+import { randomRgb } from '../utils'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const MainPage = ({ navigation }) => {
-  const { color, changeColor } = useChangeColor()
-  const { colors, handleAddColor } = useAddColor()
+  const [color, setColor] = useState('')
+  const changeColor = () => {
+    setColor(randomRgb)
+  }
+  useEffect(() => {
+    const setColorStorage = async () => {
+      await AsyncStorage.setItem('color', JSON.stringify(color))
+    }
+    return setColorStorage
+  }, [changeColor])
+
+  const [colors, setColors] = useState([])
+
+  const handleAddColor = () => {
+    setColors([...colors, color])
+  }
+  useEffect(() => {
+    const setColorsStorage = async () => {
+      await AsyncStorage.setItem('colors', JSON.stringify(colors))
+    }
+    return setColorsStorage
+  }, [handleAddColor])
 
   return (
     <>
@@ -20,12 +43,12 @@ export const MainPage = ({ navigation }) => {
         />
       </View>
       <Counter color={color} changeColor={changeColor} />
-
       <ColorView
         color={color}
         colors={colors}
         handleAddColor={handleAddColor}
       />
+      <PalletsBox colors={colors} />
     </>
   )
 }

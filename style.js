@@ -23,9 +23,16 @@ export const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: 'rgb(33, 150, 243)',
   },
-  textButton: {
+  textCounter: {
     fontSize: 16,
     lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  textChooseBtn: {
+    fontSize: 25,
+    lineHeight: 30,
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',

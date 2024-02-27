@@ -12,18 +12,16 @@ export const Counter = (props) => {
         onPress={() => {
           setCount(count + 1), props.changeColor()
         }}>
-        <Text style={styles.textButton}>-</Text>
+        <Text style={styles.textCounter}>-</Text>
       </Pressable>
       <Pressable
         style={styles.counterButton}
         onPress={() => {
           setCount(count - 1), props.changeColor()
         }}>
-        <Text style={styles.textButton}>+</Text>
+        <Text style={styles.textCounter}>+</Text>
       </Pressable>
       <Text style={{ fontSize: 50, color: props.color }}>{count}</Text>
     </View>
   )
 }
-
-export default Counter
