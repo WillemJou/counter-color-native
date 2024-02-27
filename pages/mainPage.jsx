@@ -33,22 +33,24 @@ export const MainPage = ({ navigation }) => {
 
   return (
     <>
-      <View style={[styles.rowCenterContainer, { gap: 15 }]}>
-        <Text style={{ fontSize: 18, borderBottomWidth: 1 }}>
-          Choose your random pallets by counting and colorize the world 😁
-        </Text>
-        <Button
-          title='See your pallets -->'
-          onPress={() => navigation.navigate('Pallets Page')}
+      <View style={[styles.mainContainer, { flex: 1, gap: 50 }]}>
+        <View style={[styles.columnCenterContainer, { gap: 15, flex: 1 }]}>
+          <Text style={{ fontSize: 18, borderBottomWidth: 1 }}>
+            Choose your random pallets by counting and colorize the world 😁
+          </Text>
+          <Button
+            title='See your pallets -->'
+            onPress={() => navigation.navigate('Pallets Page')}
+          />
+        </View>
+        <Counter color={color} changeColor={changeColor} />
+        <ColorView
+          color={color}
+          colors={colors}
+          handleAddColor={handleAddColor}
         />
+        <PalletsBox colors={colors} />
       </View>
-      <Counter color={color} changeColor={changeColor} />
-      <ColorView
-        color={color}
-        colors={colors}
-        handleAddColor={handleAddColor}
-      />
-      <PalletsBox colors={colors} />
     </>
   )
 }

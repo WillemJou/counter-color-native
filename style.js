@@ -1,22 +1,23 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
+  mainContainer: {
+    margin: 30,
+  },
   columnCenterContainer: {
-    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'start',
+    justifyContent: 'center',
   },
   rowCenterContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '2rem',
   },
   counterButton: {
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     paddingVertical: 20,
     paddingHorizontal: 45,
     borderRadius: 4,
@@ -31,7 +32,9 @@ export const styles = StyleSheet.create({
     color: 'white',
   },
   textChooseBtn: {
-    fontSize: 25,
+    width: 90,
+    height: 65,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: 'bold',
     letterSpacing: 0.25,

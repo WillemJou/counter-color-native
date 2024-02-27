@@ -3,7 +3,7 @@ import { styles } from '../style'
 
 export const ColorView = (props) => {
   return (
-    <View style={{ flex: 1, flexDirection: 'row', padding: '2rem' }}>
+    <View style={{ flex: 1, gap: 3, flexDirection: 'row' }}>
       <Pressable
         onPress={() => props.handleAddColor(props.colors)}
         style={[styles.counterButton, { flex: 1 }]}>
@@ -11,7 +11,7 @@ export const ColorView = (props) => {
       </Pressable>
       <View
         style={{
-          flex: 2,
+          flex: 4,
           backgroundColor: props.color,
         }}
       />
