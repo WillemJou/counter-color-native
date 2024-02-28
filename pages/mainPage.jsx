@@ -49,7 +49,7 @@ export const MainPage = ({ navigation }) => {
           colors={colors}
           handleAddColor={handleAddColor}
         />
-        <PalletsBox colors={colors} />
+        <PalletsBox colors={colors} setColors={setColors} />
       </View>
     </>
   )

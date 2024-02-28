@@ -14,6 +14,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  rowEndContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
   counterButton: {
     alignItems: 'center',
     justifyContent: 'center',
