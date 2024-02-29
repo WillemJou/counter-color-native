@@ -19,30 +19,25 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
-  counterButton: {
+  button: {
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 45,
     borderRadius: 4,
-    elevation: 3,
     backgroundColor: 'rgb(33, 150, 243)',
   },
-  textCounter: {
-    fontSize: 16,
-    lineHeight: 21,
+  text: {
+    fontSize: 15,
+    color: 'white',
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
   },
-  textChooseBtn: {
-    width: 90,
-    height: 65,
-    fontSize: 20,
-    lineHeight: 30,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
+  chooseButton: {
+    paddingHorizontal: 20,
   },
+  counterButton: {
+    paddingHorizontal: 25,
+    paddingVertical: 17,
+  },
+  resetButton: {},
 })

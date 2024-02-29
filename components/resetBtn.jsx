@@ -7,8 +7,10 @@ export const ResetButton = (props) => {
     props.setColors([])
   }
   return (
-    <Pressable style={styles.counterButton} onPress={() => resetCounter()}>
-      <Text>Reset</Text>
+    <Pressable
+      style={(styles.resetButton, styles.button)}
+      onPress={() => resetCounter()}>
+      <Text style={styles.text}>Reset</Text>
     </Pressable>
   )
 }
