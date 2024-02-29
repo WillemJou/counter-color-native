@@ -6,19 +6,21 @@ import { styles } from '../style'
 import { useState, useEffect } from 'react'
 import { randomRgb } from '../utils'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { ResetButton } from '../components/resetBtn'
 
 export const MainPage = ({ navigation }) => {
+  const [count, setCount] = useState(0)
   const [color, setColor] = useState('')
   const changeColor = () => {
     setColor(randomRgb)
   }
+
   useEffect(() => {
     const setColorStorage = async () => {
       await AsyncStorage.setItem('color', JSON.stringify(color))
     }
     return setColorStorage
   }, [changeColor])
-
   const [colors, setColors] = useState([])
 
   const handleAddColor = () => {
@@ -43,12 +45,18 @@ export const MainPage = ({ navigation }) => {
             onPress={() => navigation.navigate('Pallets Page')}
           />
         </View>
-        <Counter color={color} changeColor={changeColor} />
+        <Counter
+          count={count}
+          setCount={setCount}
+          color={color}
+          changeColor={changeColor}
+        />
         <ColorView
           color={color}
           colors={colors}
           handleAddColor={handleAddColor}
         />
+        <ResetButton setCount={setCount} setColors={setColors} />
         <PalletsBox colors={colors} setColors={setColors} />
       </View>
     </>
