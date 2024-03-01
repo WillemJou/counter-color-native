@@ -2,7 +2,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { MainPage } from './pages/mainPage'
-import { PalletsPage } from './pages/palletsPage'
+import { PalettesPage } from './pages/palettesPage'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -18,8 +18,8 @@ const App = () => {
           component={MainPage}
         />
         <Stack.Screen
-          name='Pallets Page'
-          component={PalletsPage}
+          name='Palettes Page'
+          component={PalettesPage}
           options={{
             headerTitleAlign: 'center',
           }}

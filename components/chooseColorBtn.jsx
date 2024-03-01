@@ -1,7 +1,7 @@
 import { Pressable, Text } from 'react-native'
 import { styles } from '../style'
 
-export const ChoosBtn = (props) => {
+export const ChooseColorBtn = (props) => {
   return (
     <Pressable
       onPress={() => props.handleAddColor(props.colors)}

@@ -1,17 +1,19 @@
 import { View, Text, Button } from 'react-native'
 import { Counter } from '../layouts/counter'
 import { ColorView } from '../layouts/colorView'
-import { PalletsBox } from '../layouts/palletsBox'
+import { PaletteBox } from '../layouts/paletteBox'
 import { styles } from '../style'
 import { useState, useEffect } from 'react'
 import { randomRgb } from '../utils'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ResetButton } from '../components/resetBtn'
+import { ChoosePaletteButton } from '../components/choosePaletteBtn'
 
 export const MainPage = ({ navigation }) => {
   const [count, setCount] = useState(0)
   const [color, setColor] = useState('')
   const [colors, setColors] = useState([])
+  const [palette, setPalette] = useState([])
 
   const changeColor = () => {
     setColor(randomRgb)
@@ -27,6 +29,12 @@ export const MainPage = ({ navigation }) => {
 
   const handleAddColor = () => {
     setColors([...colors, color])
+  }
+
+  const handleAddPalette = () => {
+    setPalette([...palette, ...colors])
+    setCount(0)
+    setColors([])
   }
 
   useEffect(() => {
@@ -48,19 +56,22 @@ export const MainPage = ({ navigation }) => {
       <View style={[styles.mainContainer, { flex: 1, gap: 50 }]}>
         <View style={[styles.columnCenterContainer, { gap: 15, flex: 1 }]}>
           <Text style={{ fontSize: 18, borderBottomWidth: 1 }}>
-            Choose your random pallets by counting and colorize the world 😁
+            Choose your random palettes by counting and colorize the world 😁
           </Text>
           <Button
-            title='See your pallets -->'
-            onPress={() => navigation.navigate('Pallets Page')}
+            title='See your palettes -->'
+            onPress={() => navigation.navigate('Palettes Page')}
           />
         </View>
+        {colors.length > 2 ? (
+          <ChoosePaletteButton handleAddPalette={handleAddPalette} />
+        ) : null}
+        <PaletteBox colors={colors} setColors={setColors} />
         <ColorView
           color={color}
           colors={colors}
           handleAddColor={handleAddColor}
         />
-        <PalletsBox colors={colors} setColors={setColors} />
         <Counter
           count={count}
           color={color}

@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   rowEndContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    alignItems: 'flex-end',
   },
   button: {
     alignItems: 'center',
@@ -39,5 +38,4 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 17,
   },
-  resetButton: {},
 })
