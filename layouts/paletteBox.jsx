@@ -1,13 +1,8 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { styles } from '../style'
+import { CloseButton } from '../components/closeBtn'
 
 export const PaletteBox = (props) => {
-  const removeColor = (index) => {
-    const list = [...props.colors]
-    list.splice(index, 1)
-    props.setColors(list)
-  }
-
   return (
     <View style={[styles.columnCenterContainer, { flex: 4 }]}>
       {props.colors.map((children, index) => (
@@ -20,7 +15,11 @@ export const PaletteBox = (props) => {
             backgroundColor: children,
           }}>
           <View style={[styles.rowEndContainer, { flex: 1 }, { padding: 5 }]}>
-            <Text onPress={() => removeColor(index)}>x</Text>
+            <CloseButton
+              index={index}
+              item={props.colors}
+              setToRemove={props.setColors}
+            />
           </View>
         </View>
       ))}

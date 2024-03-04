@@ -3,9 +3,8 @@ import { Counter } from '../layouts/counter'
 import { ColorView } from '../layouts/colorView'
 import { PaletteBox } from '../layouts/paletteBox'
 import { styles } from '../style'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { randomRgb } from '../utils'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ResetButton } from '../components/resetBtn'
 import { ChoosePaletteButton } from '../components/choosePaletteBtn'
 import { StateContext } from '../hooks/context'
@@ -15,7 +14,6 @@ export const MainPage = ({ navigation }) => {
   const [color, setColor] = useState('')
   const [colors, setColors] = useState([])
   const { palette, setPalette } = useContext(StateContext)
-  console.log(palette)
 
   const changeColor = () => {
     setColor(randomRgb)
@@ -34,24 +32,10 @@ export const MainPage = ({ navigation }) => {
   }
 
   const handleAddPalette = () => {
-    setPalette([...palette, ...colors])
+    setPalette([...palette, colors])
     setCount(0)
     setColors([])
   }
-
-  useEffect(() => {
-    const setColorStorage = async () => {
-      await AsyncStorage.setItem('color', JSON.stringify(color))
-    }
-    return setColorStorage
-  }, [changeColor])
-
-  useEffect(() => {
-    const setColorsStorage = async () => {
-      await AsyncStorage.setItem('colors', JSON.stringify(colors))
-    }
-    return setColorsStorage
-  }, [handleAddColor])
 
   return (
     <>
