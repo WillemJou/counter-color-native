@@ -16,4 +16,8 @@ const getColor = async () =>
 const getColors = async () =>
   JSON.parse((await AsyncStorage.getItem('colors')) || '[]')
 
-export { randomHexa, randomRgb, getColor, getColors }
+const clearAsyncStorage = async () => {
+  await AsyncStorage.clear()
+}
+
+export { randomHexa, randomRgb, getColor, getColors, clearAsyncStorage }

@@ -3,17 +3,19 @@ import { Counter } from '../layouts/counter'
 import { ColorView } from '../layouts/colorView'
 import { PaletteBox } from '../layouts/paletteBox'
 import { styles } from '../style'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { randomRgb } from '../utils'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ResetButton } from '../components/resetBtn'
 import { ChoosePaletteButton } from '../components/choosePaletteBtn'
+import { StateContext } from '../hooks/context'
 
 export const MainPage = ({ navigation }) => {
   const [count, setCount] = useState(0)
   const [color, setColor] = useState('')
   const [colors, setColors] = useState([])
-  const [palette, setPalette] = useState([])
+  const { palette, setPalette } = useContext(StateContext)
+  console.log(palette)
 
   const changeColor = () => {
     setColor(randomRgb)
